@@ -4,21 +4,31 @@
         Title="Личный кабинет"
         Height="300" Width="500"
         WindowStartupLocation="CenterScreen">
-    <Grid>
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-            <TextBlock Name="WelcomeText"
-                       FontSize="18"
-                       TextAlignment="Center"
-                       Margin="0,0,0,10"/>
-            <TextBlock Name="RoleText"
-                       FontSize="14"
-                       TextAlignment="Center"
-                       Foreground="Gray"
-                       Margin="0,0,0,30"/>
-            <Button Content="Выйти"
-                    Width="150"
-                    Height="35"
-                    Click="LogoutButton_Click"/>
-        </StackPanel>
+    <Grid Margin="40">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0"
+                   Name="WelcomeText"
+                   FontSize="18"
+                   TextAlignment="Center"
+                   TextWrapping="Wrap"
+                   Margin="0,0,0,10"/>
+
+        <TextBlock Grid.Row="1"
+                   Name="RoleText"
+                   FontSize="14"
+                   TextAlignment="Center"
+                   Foreground="Gray"
+                   TextWrapping="Wrap"/>
+
+        <Button Grid.Row="3"
+                Content="Выйти"
+                Height="32"
+                Click="LogoutButton_Click"/>
     </Grid>
 </Window>
