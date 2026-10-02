@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoleRouter.UI", "RoleRouter.UI\RoleRouter.UI.csproj", "{C791E6A5-EF59-4C35-8D1C-94F1498179CF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoleRouter.Data", "RoleRouter.Data\RoleRouter.Data.csproj", "{602C1A86-A2D7-4434-BD2B-3B1B1FCA8880}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{C791E6A5-EF59-4C35-8D1C-94F1498179CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C791E6A5-EF59-4C35-8D1C-94F1498179CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C791E6A5-EF59-4C35-8D1C-94F1498179CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{602C1A86-A2D7-4434-BD2B-3B1B1FCA8880}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{602C1A86-A2D7-4434-BD2B-3B1B1FCA8880}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{602C1A86-A2D7-4434-BD2B-3B1B1FCA8880}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{602C1A86-A2D7-4434-BD2B-3B1B1FCA8880}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
