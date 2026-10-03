@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarkupChallenge.UI", "MarkupChallenge.UI\MarkupChallenge.UI.csproj", "{E644DAFA-3045-4BDF-8D4A-B7926D618C94}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MakrupProject.Data", "MakrupProject.Data\MakrupProject.Data.csproj", "{794B096E-88D2-4EB5-8371-9F2063EC53B4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{E644DAFA-3045-4BDF-8D4A-B7926D618C94}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E644DAFA-3045-4BDF-8D4A-B7926D618C94}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E644DAFA-3045-4BDF-8D4A-B7926D618C94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{794B096E-88D2-4EB5-8371-9F2063EC53B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{794B096E-88D2-4EB5-8371-9F2063EC53B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{794B096E-88D2-4EB5-8371-9F2063EC53B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{794B096E-88D2-4EB5-8371-9F2063EC53B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
