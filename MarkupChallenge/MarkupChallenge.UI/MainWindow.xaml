@@ -3,10 +3,141 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:MarkupChallenge.UI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Список товаров" Height="700" Width="1000"
+        WindowStartupLocation="CenterScreen"
+        Background="White">
 
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/> 
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <Grid Grid.Row="0" Margin="0,15,0,15">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0"
+                       Text="Поиск:"
+                       VerticalAlignment="Center"
+                       Margin="20,0,10,0"/>
+
+            <TextBox Grid.Column="1"
+                     x:Name="SearchBox"
+                     Height="26"
+                     Padding="4,2"
+                     Margin="0,0,20,0"
+                     TextChanged="SearchBox_TextChanged"/>
+        </Grid>
+        
+        <ListBox Grid.Row="1"
+                 x:Name="ProductsList"
+                 HorizontalContentAlignment="Stretch"
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                 BorderBrush="LightGray"
+                 BorderThickness="1"
+                 Margin="0"
+                 Padding="0">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Padding" Value="0"/>
+                    <Setter Property="Margin" Value="4"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListBox.ItemContainerStyle>
+
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border x:Name="CardBorder"
+                            BorderBrush="Black"
+                            BorderThickness="1"
+                            Background="White">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/> 
+                                <ColumnDefinition Width="130"/> 
+                            </Grid.ColumnDefinitions>
+                            
+
+                            
+                            <Border Grid.Column="0"
+                                    x:Name="CardBorderStackPanel"
+                                    BorderBrush="Black"
+                                    BorderThickness="1"
+                                    Margin="8,8, 0, 8"
+                                    Background="White">
+                                <StackPanel
+                                        Margin="5,8,5,8"
+                                        VerticalAlignment="Top"
+                                        >
+                                    <TextBlock FontWeight="Bold"
+                                               FontSize="14"
+                                               TextWrapping="Wrap"
+                                               Text="{Binding Title}"/>
+
+                                    <TextBlock FontSize="12"
+                                               TextWrapping="Wrap"
+                                               Text="{Binding DescriptionText}"/>
+
+                                    <TextBlock FontSize="12"
+                                               TextWrapping="Wrap"
+                                               Text="{Binding ManufacturerText}"/>
+
+                                    <TextBlock FontSize="12"
+                                               TextWrapping="Wrap"
+                                               Text="{Binding SupplierText}"/>
+                                    
+                                    <StackPanel Orientation="Horizontal" Margin="0,3,0,3">
+                                        <TextBlock FontSize="12"
+                                                   Foreground="Red"
+                                                   Text="{Binding OldPriceText}">
+                                            <TextBlock.TextDecorations>
+                                                <TextDecoration Location="Strikethrough"/>
+                                            </TextBlock.TextDecorations>
+                                        </TextBlock>
+                                        <TextBlock FontSize="12"
+                                                   Foreground="Black"
+                                                   Margin="8,0,0,0"
+                                                   Text="{Binding NewPriceText}"/>
+                                    </StackPanel>
+                                    
+
+                                    <TextBlock FontSize="12"
+                                               TextWrapping="Wrap"
+                                               Text="{Binding CountText}"/>
+                                </StackPanel>
+                            </Border>
+                            
+                            
+
+                            <Border Grid.Column="1"
+                                    x:Name="CardBorderDiscount"
+                                    BorderBrush="Black"
+                                    BorderThickness="1"
+                                    Margin="8"
+                                    Background="White">
+                                <TextBlock Grid.Column="2"
+                                           Text="{Binding Discount}"
+                                           FontSize="28"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                />
+                            </Border>
+                        </Grid>
+                    </Border>
+                    
+                    <DataTemplate.Triggers>
+                        <DataTrigger Binding="{Binding IsHighlighted}" Value="True">
+                            <Setter TargetName="CardBorder" Property="Background" Value="#C8A2C8"/>
+                            <Setter TargetName="CardBorderStackPanel" Property="Background" Value="#C8A2C8"/>
+                            <Setter TargetName="CardBorderDiscount" Property="Background" Value="#C8A2C8"/>
+                        </DataTrigger>
+                    </DataTemplate.Triggers>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </Window>
