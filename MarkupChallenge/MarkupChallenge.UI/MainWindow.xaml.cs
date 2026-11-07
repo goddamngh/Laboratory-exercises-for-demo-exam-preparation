@@ -18,7 +18,7 @@ public partial class MainWindow : Window
         InitializeComponent();
         LoadProducts();
     }
-    
+
     private void LoadProducts()
     {
         using var db = new MarkupChallengeDbContext();
@@ -31,6 +31,7 @@ public partial class MainWindow : Window
             .OrderBy(p => p.Id)
             .Select(p => new ProductRow
             {
+                Id               = p.Id,
                 Article          = p.Article ?? "",
                 Title            = (p.Category != null ? p.Category.Name + " | " : "")
                                     + (p.Name != null ? p.Name.Name : ""),
@@ -46,7 +47,7 @@ public partial class MainWindow : Window
 
         ApplyFilter();
     }
-    
+
     private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
     {
         ApplyFilter();
@@ -72,17 +73,25 @@ public partial class MainWindow : Window
 
     private void AddProductButton_OnClick(object sender, RoutedEventArgs e)
     {
-        throw new NotImplementedException();
+        var editor = new ProductEditorWindow { Owner = this };
+        if (editor.ShowDialog() == true)
+            LoadProducts();
     }
 
     private void ItemListBox_OnHandler(object sender, MouseButtonEventArgs e)
     {
-        throw new NotImplementedException();
+        if (sender is not ListBoxItem item) return;
+        if (item.DataContext is not ProductRow row) return;
+
+        var editor = new ProductEditorWindow(row.Id) { Owner = this };
+        if (editor.ShowDialog() == true)
+            LoadProducts();
     }
 }
 
 public class ProductRow
 {
+    public int Id { get; set; }
     public string Article { get; set; } = "";
     public string Title { get; set; } = "";
     public string Description { get; set; } = "";
@@ -97,11 +106,11 @@ public class ProductRow
     public string ManufacturerText => $"Производитель: {ManufacturerName}";
     public string SupplierText => $"Поставщик: {SupplierName}";
     public string CountText => $"Количество на складе: {Count}";
-    
+
     public string OldPriceText => $"Цена: {Price:N0}";
     public string NewPriceText => Discount > 0
         ? $"{Price * (1 - Discount / 100):N0}"
         : "";
-    
+
     public bool IsHighlighted => Discount > 10;
 }
