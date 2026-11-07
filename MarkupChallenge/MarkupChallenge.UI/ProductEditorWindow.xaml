@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:MarkupChallenge.UI"
         mc:Ignorable="d"
         Title="Товар"
-        Height="640" Width="520"
+        Height="700" Width="1000"
         WindowStartupLocation="CenterOwner"
         ResizeMode="CanMinimize"
         Background="White">
@@ -15,22 +15,20 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="180"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-
-        <!-- ID: в режиме добавления строка скрывается (см. code-behind),
-             в режиме редактирования только для чтения -->
+        
         <TextBlock x:Name="IdLabel" Grid.Row="0" Grid.Column="0"
                    Text="ID:" VerticalAlignment="Center" Margin="0,0,10,10"/>
         <TextBox x:Name="IdBox" Grid.Row="0" Grid.Column="1"
@@ -51,7 +49,7 @@
         <TextBlock Grid.Row="3" Grid.Column="0"
                    Text="Описание:" VerticalAlignment="Top" Margin="0,4,10,10"/>
         <TextBox x:Name="DescriptionBox" Grid.Row="3" Grid.Column="1"
-                 Height="80" Margin="0,0,0,10"
+                 Height="Auto" Margin="0,0,0,10"
                  TextWrapping="Wrap" AcceptsReturn="True"
                  VerticalScrollBarVisibility="Auto"/>
 
