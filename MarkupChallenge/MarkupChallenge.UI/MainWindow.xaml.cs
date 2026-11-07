@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using MakrupProject.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -68,7 +69,16 @@ public partial class MainWindow : Window
 
         ProductsList.ItemsSource = filtered;
     }
-    
+
+    private void AddProductButton_OnClick(object sender, RoutedEventArgs e)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void ItemListBox_OnHandler(object sender, MouseButtonEventArgs e)
+    {
+        throw new NotImplementedException();
+    }
 }
 
 public class ProductRow

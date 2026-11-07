@@ -5,8 +5,96 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:MarkupChallenge.UI"
         mc:Ignorable="d"
-        Title="ProductEditorWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="Товар"
+        Height="640" Width="520"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="CanMinimize"
+        Background="White">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="180"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- ID: в режиме добавления строка скрывается (см. code-behind),
+             в режиме редактирования только для чтения -->
+        <TextBlock x:Name="IdLabel" Grid.Row="0" Grid.Column="0"
+                   Text="ID:" VerticalAlignment="Center" Margin="0,0,10,10"/>
+        <TextBox x:Name="IdBox" Grid.Row="0" Grid.Column="1"
+                 Height="26" Margin="0,0,0,10"
+                 IsReadOnly="True" Background="#F0F0F0"/>
+
+        <TextBlock Grid.Row="1" Grid.Column="0"
+                   Text="Наименование:" VerticalAlignment="Center" Margin="0,0,10,10"/>
+        <TextBox x:Name="NameBox" Grid.Row="1" Grid.Column="1"
+                 Height="26" Margin="0,0,0,10"/>
+
+        <TextBlock Grid.Row="2" Grid.Column="0"
+                   Text="Категория:" VerticalAlignment="Center" Margin="0,0,10,10"/>
+        <ComboBox x:Name="CategoryCombo" Grid.Row="2" Grid.Column="1"
+                  Height="26" Margin="0,0,0,10"
+                  DisplayMemberPath="Name"/>
+
+        <TextBlock Grid.Row="3" Grid.Column="0"
+                   Text="Описание:" VerticalAlignment="Top" Margin="0,4,10,10"/>
+        <TextBox x:Name="DescriptionBox" Grid.Row="3" Grid.Column="1"
+                 Height="80" Margin="0,0,0,10"
+                 TextWrapping="Wrap" AcceptsReturn="True"
+                 VerticalScrollBarVisibility="Auto"/>
+
+        <TextBlock Grid.Row="4" Grid.Column="0"
+                   Text="Производитель:" VerticalAlignment="Center" Margin="0,0,10,10"/>
+        <ComboBox x:Name="ManufacturerCombo" Grid.Row="4" Grid.Column="1"
+                  Height="26" Margin="0,0,0,10"
+                  DisplayMemberPath="Name"/>
+
+        <TextBlock Grid.Row="5" Grid.Column="0"
+                   Text="Поставщик:" VerticalAlignment="Center" Margin="0,0,10,10"/>
+        <ComboBox x:Name="SupplierCombo" Grid.Row="5" Grid.Column="1"
+                  Height="26" Margin="0,0,0,10"
+                  DisplayMemberPath="Name"/>
+
+        <TextBlock Grid.Row="6" Grid.Column="0"
+                   Text="Цена:" VerticalAlignment="Center" Margin="0,0,10,10"/>
+        <TextBox x:Name="PriceBox" Grid.Row="6" Grid.Column="1"
+                 Height="26" Margin="0,0,0,10"/>
+
+        <TextBlock Grid.Row="7" Grid.Column="0"
+                   Text="Количество на складе:" VerticalAlignment="Center" Margin="0,0,10,10"/>
+        <TextBox x:Name="CountBox" Grid.Row="7" Grid.Column="1"
+                 Height="26" Margin="0,0,0,10"/>
+
+        <TextBlock Grid.Row="8" Grid.Column="0"
+                   Text="Действующая скидка (%):" VerticalAlignment="Center" Margin="0,0,10,10"/>
+        <TextBox x:Name="DiscountBox" Grid.Row="8" Grid.Column="1"
+                 Height="26" Margin="0,0,0,10"/>
+
+        <StackPanel Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2"
+                    Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+            <Button x:Name="DeleteButton" Content="Удалить"
+                    Width="100" Height="30" Margin="0,0,10,0"
+                    IsEnabled="False"
+                    Click="DeleteButton_OnClick"/>
+            <Button x:Name="SaveButton" Content="Сохранить"
+                    Width="100" Height="30" Margin="0,0,10,0"
+                    Click="SaveButton_OnClick"/>
+            <Button x:Name="CancelButton" Content="Отмена"
+                    Width="100" Height="30"
+                    IsCancel="True"
+                    Click="CancelButton_OnClick"/>
+        </StackPanel>
     </Grid>
 </Window>

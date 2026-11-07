@@ -18,6 +18,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
             <TextBlock Grid.Column="0"
@@ -31,6 +32,13 @@
                      Padding="4,2"
                      Margin="0,0,20,0"
                      TextChanged="SearchBox_TextChanged"/>
+            
+            <Button Grid.Column="2"
+                    x:Name="AddProductButton"
+                    Content="Добавить товар"
+                    VerticalAlignment="Center"
+                    Margin="20,0,10,0"
+                    Click="AddProductButton_OnClick"></Button>
         </Grid>
         
         <ListBox Grid.Row="1"
@@ -46,6 +54,7 @@
                     <Setter Property="Padding" Value="0"/>
                     <Setter Property="Margin" Value="4"/>
                     <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    <EventSetter Event="MouseDoubleClick" Handler="ItemListBox_OnHandler"></EventSetter>
                 </Style>
             </ListBox.ItemContainerStyle>
 
@@ -59,6 +68,7 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/> 
                                 <ColumnDefinition Width="130"/> 
+                                
                             </Grid.ColumnDefinitions>
                             
 

@@ -8,4 +8,19 @@ public partial class ProductEditorWindow : Window
     {
         InitializeComponent();
     }
+
+    private void DeleteButton_OnClick(object sender, RoutedEventArgs e)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void SaveButton_OnClick(object sender, RoutedEventArgs e)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void CancelButton_OnClick(object sender, RoutedEventArgs e)
+    {
+        Close();
+    }
 }
