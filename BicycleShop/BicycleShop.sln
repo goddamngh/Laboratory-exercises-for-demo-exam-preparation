@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BicycleShop.UI", "BicycleShop.UI\BicycleShop.UI.csproj", "{DD474798-5CD9-4FF3-9971-F621C604BFDE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BicycleShop.Data", "BicycleShop.Data\BicycleShop.Data.csproj", "{CAB782F5-A68F-40A6-92F3-71A59B631D13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BicycleShop.Core", "BicycleShop.Core\BicycleShop.Core.csproj", "{DD619B0F-9253-4ACA-B57F-A2E9764D8E85}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,13 @@ Global
 		{DD474798-5CD9-4FF3-9971-F621C604BFDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD474798-5CD9-4FF3-9971-F621C604BFDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD474798-5CD9-4FF3-9971-F621C604BFDE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAB782F5-A68F-40A6-92F3-71A59B631D13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAB782F5-A68F-40A6-92F3-71A59B631D13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAB782F5-A68F-40A6-92F3-71A59B631D13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAB782F5-A68F-40A6-92F3-71A59B631D13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD619B0F-9253-4ACA-B57F-A2E9764D8E85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD619B0F-9253-4ACA-B57F-A2E9764D8E85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD619B0F-9253-4ACA-B57F-A2E9764D8E85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD619B0F-9253-4ACA-B57F-A2E9764D8E85}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
