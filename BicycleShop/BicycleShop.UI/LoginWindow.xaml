@@ -1,0 +1,38 @@
+<Window x:Class="BicycleShop.UI.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Авторизация - BicycleShop" Height="400" Width="300"
+        WindowStartupLocation="CenterScreen" FontFamily="Arial">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Вход в систему" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+        <StackPanel Grid.Row="1" Margin="0,0,0,10">
+            <TextBlock Text="Логин:"/>
+            <TextBox Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}" Height="25"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Margin="0,0,0,10">
+            <TextBlock Text="Пароль:"/>
+            <!-- Передаем PasswordBox в команду через CommandParameter -->
+            <PasswordBox x:Name="PasswordBoxControl" Height="25"/>
+        </StackPanel>
+
+        <TextBlock Grid.Row="3" Text="{Binding ErrorMessage}" Foreground="Red" TextWrapping="Wrap" Margin="0,0,0,10"/>
+
+        <StackPanel Grid.Row="4" VerticalAlignment="Bottom">
+            <!-- Команда привязывается к LoginUserCommand, а пароль передается параметром -->
+            <Button Content="Войти" Height="30" Margin="0,0,0,10" 
+                    Command="{Binding LoginUserCommand}" 
+                    CommandParameter="{Binding ElementName=PasswordBoxControl, Path=Password}"/>
+            <Button Content="Войти как гость" Height="30" Command="{Binding LoginAsGuestCommand}"/>
+        </StackPanel>
+    </Grid>
+</Window>
