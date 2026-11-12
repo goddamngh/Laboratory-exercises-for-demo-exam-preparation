@@ -8,4 +8,9 @@
         <UseWPF>true</UseWPF>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\BicycleShop.Core\BicycleShop.Core.csproj" />
+      <ProjectReference Include="..\BicycleShop.Data\BicycleShop.Data.csproj" />
+    </ItemGroup>
+
 </Project>
