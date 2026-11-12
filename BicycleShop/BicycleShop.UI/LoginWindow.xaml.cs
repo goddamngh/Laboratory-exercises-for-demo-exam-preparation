@@ -19,4 +19,12 @@ public partial class LoginWindow : Window
             this.Close();
         };
     }
+
+    private void PasswordBoxControl_OnPasswordChanged(object sender, RoutedEventArgs e)
+    {
+        if (DataContext is LoginViewModel vm)
+        {
+            vm.Password = PasswordBoxControl.Password;
+        }
+    }
 }

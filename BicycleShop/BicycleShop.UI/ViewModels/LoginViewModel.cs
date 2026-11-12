@@ -15,35 +15,43 @@ public partial class LoginViewModel: ObservableObject
 
     public event Action? OnLoginSuccess;
 
+    [ObservableProperty]
+    private string _password = string.Empty;
+
     [RelayCommand]
-    private void LoginUser(string password)
+    private void LoginUser() // Убрали параметр
     {
-        _errorMessage =  string.Empty;
-        if (string.IsNullOrWhiteSpace(Login) || string.IsNullOrWhiteSpace(password))
+        ErrorMessage = string.Empty;
+
+        // Теперь проверяем свойство Password
+        if (string.IsNullOrWhiteSpace(Login) || string.IsNullOrWhiteSpace(Password))
         {
-            _errorMessage = "Введите логин и пароль!";
+            ErrorMessage = "Введите логин и пароль!";
             return;
         }
 
         try
         {
             using var context = new BicycleShopDbContext();
+        
             var user = context.Users.FirstOrDefault(u => 
-                u.Password == password &&
+                u.Password == Password && // Используем свойство
                 u.Login == Login);
+            
             if (user == null)
             {
                 ErrorMessage = "Неверный логин или пароль!";
                 return;
             }
-            var role = context.Roles.FirstOrDefault(r => r.Id == user.RoleId).RoleName;
+
+            var role = context.Roles.FirstOrDefault(r => r.Id == user.RoleId)?.RoleName ?? "Гость";
+        
             UserSession.SetUser(user.Id, user.Fio, role);
             OnLoginSuccess?.Invoke();
-            
         }
         catch (Exception ex)
         {
-            ErrorMessage = "Ошибка подключения к БД!";
+            ErrorMessage = $"Ошибка: {ex.Message}"; 
         }
     }
 

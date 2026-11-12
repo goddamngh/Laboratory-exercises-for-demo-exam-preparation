@@ -22,7 +22,7 @@
         <StackPanel Grid.Row="2" Margin="0,0,0,10">
             <TextBlock Text="Пароль:"/>
             <!-- Передаем PasswordBox в команду через CommandParameter -->
-            <PasswordBox x:Name="PasswordBoxControl" Height="25"/>
+            <PasswordBox x:Name="PasswordBoxControl" Height="25" PasswordChanged="PasswordBoxControl_OnPasswordChanged"/>
         </StackPanel>
 
         <TextBlock Grid.Row="3" Text="{Binding ErrorMessage}" Foreground="Red" TextWrapping="Wrap" Margin="0,0,0,10"/>
@@ -30,8 +30,7 @@
         <StackPanel Grid.Row="4" VerticalAlignment="Bottom">
             <!-- Команда привязывается к LoginUserCommand, а пароль передается параметром -->
             <Button Content="Войти" Height="30" Margin="0,0,0,10" 
-                    Command="{Binding LoginUserCommand}" 
-                    CommandParameter="{Binding ElementName=PasswordBoxControl, Path=Password}"/>
+                    Command="{Binding LoginUserCommand}"/>
             <Button Content="Войти как гость" Height="30" Command="{Binding LoginAsGuestCommand}"/>
         </StackPanel>
     </Grid>
