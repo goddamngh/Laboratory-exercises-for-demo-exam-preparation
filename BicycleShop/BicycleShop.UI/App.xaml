@@ -4,8 +4,5 @@
              xmlns:local="clr-namespace:BicycleShop.UI">
     <Application.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
-        <Style TargetType="Window">
-            <Setter Property="FontFamily" Value="Arial"/>
-        </Style>
     </Application.Resources>
 </Application>

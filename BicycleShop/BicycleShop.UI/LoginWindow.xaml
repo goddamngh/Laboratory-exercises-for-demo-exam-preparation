@@ -2,7 +2,8 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Авторизация - BicycleShop" Height="400" Width="300"
-        WindowStartupLocation="CenterScreen" FontFamily="Arial">
+        WindowStartupLocation="CenterScreen" FontFamily="Arial"
+        Icon="/Images/icon.ico">
     <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
