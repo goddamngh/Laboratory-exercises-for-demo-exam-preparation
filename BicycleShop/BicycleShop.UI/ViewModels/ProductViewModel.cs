@@ -20,10 +20,12 @@ public class ProductViewModel: ObservableObject
     public string CategoryName => _product.Category?.CategoryName ?? "Не указана";
     public string ManufacturerName => _product.Manufacturer?.ManufacturerName ?? "Не указан";
     public string SupplierName => _product.Supplier?.SupplierName ?? "Не указан";
-    public string UnitName => _product.Unit.UnitName ?? "Не указано";
+    public string UnitName => _product.Unit?.UnitName ?? "Не указано";
     public int QuantityInStock => _product.QuantityInStock;
     public int ValidDiscount => _product.ValidDiscount;
-    public string DiscountDisplay => $"ValidDiscount%";
+    public string DiscountDisplay => $"{ValidDiscount}%";
+    public bool IsHighDiscount => ValidDiscount > 15;
+    public decimal Price => _product.Price;
     
     public decimal FinalPrice => _product.Price - (_product.Price * (decimal)_product.ValidDiscount / 100);
     
@@ -36,7 +38,7 @@ public class ProductViewModel: ObservableObject
         get
         {
             if (string.IsNullOrWhiteSpace(_product.Photo)) 
-                return "/Image/picture.png"; 
+                return "/Images/picture.png"; 
             return $"/Images/{_product.Photo}";
         }
     }

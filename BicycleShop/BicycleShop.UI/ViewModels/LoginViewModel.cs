@@ -19,7 +19,7 @@ public partial class LoginViewModel: ObservableObject
     private string _password = string.Empty;
 
     [RelayCommand]
-    private void LoginUser() // Убрали параметр
+    private void LoginUser()
     {
         ErrorMessage = string.Empty;
 
@@ -35,7 +35,7 @@ public partial class LoginViewModel: ObservableObject
             using var context = new BicycleShopDbContext();
         
             var user = context.Users.FirstOrDefault(u => 
-                u.Password == Password && // Используем свойство
+                u.Password == Password &&
                 u.Login == Login);
             
             if (user == null)
