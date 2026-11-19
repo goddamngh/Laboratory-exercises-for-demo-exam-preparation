@@ -10,13 +10,11 @@
             <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
-        <!-- Шапка -->
+        
         <Border Background="#6A5ACD">
             <Grid>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="20,0,0,0">
-                    <!-- Логотип (сохраняет пропорции благодаря Stretch="Uniform") -->
-                    <!-- Пока файла нет, картинка просто не отрисуется, текст сместится влево -->
+                    
                     <Image Source="/Images/icon.ico" Height="35" Stretch="Uniform" Margin="0,0,15,0"/>
             
                     <TextBlock Text="Магазин велосипедов" Foreground="White" FontSize="18" FontWeight="Bold" 
@@ -30,11 +28,12 @@
         <!-- Список товаров -->
         <ListBox Grid.Row="1" ItemsSource="{Binding Products}" 
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
-                 Background="#F0F0F0" BorderThickness="0" Padding="10">
+                 Background="#F0F0F0" BorderThickness="0" Padding="10"
+                 HorizontalContentAlignment="Stretch">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <!-- Контейнер для одного товара -->
-                    <Border BorderBrush="#CCCCCC" BorderThickness="1" Margin="5" CornerRadius="5" Padding="10">
+                    <Border BorderBrush="#CCCCCC" BorderThickness="1" Margin="5"  Padding="10">
                         <Border.Style>
                             <Style TargetType="Border">
                                 <Setter Property="Background" Value="White"/>
