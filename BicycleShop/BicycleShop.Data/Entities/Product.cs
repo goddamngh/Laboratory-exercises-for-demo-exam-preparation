@@ -13,7 +13,7 @@ public partial class Product
 
     public int? UnitId { get; set; }
 
-    public int Price { get; set; }
+    public decimal  Price { get; set; }
 
     public int? SupplierId { get; set; }
 
