@@ -135,6 +135,8 @@ public partial class BicycleShopDbContext : DbContext
             entity.Property(e => e.Description).HasMaxLength(255);
             entity.Property(e => e.Name).HasMaxLength(255);
             entity.Property(e => e.Photo).HasMaxLength(50);
+            entity.Property(e => e.Price)
+                .HasColumnType("decimal(18,2)");
 
             entity.HasOne(d => d.Category).WithMany(p => p.Products)
                 .HasForeignKey(d => d.CategoryId)
