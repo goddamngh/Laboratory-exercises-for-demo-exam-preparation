@@ -87,12 +87,27 @@
                 <TextBlock Text="Единица измерения:" Margin="0,0,0,5"/>
                 <ComboBox ItemsSource="{Binding Units}" DisplayMemberPath="UnitName" SelectedItem="{Binding SelectedUnit}" Height="25" Margin="0,0,0,20"/>
 
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Button Content="Сохранить" Command="{Binding SaveCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" 
-                            Background="#4B0082" Foreground="White" Width="120" Height="35" Margin="0,0,10,0"/>
-                    <Button Content="Отмена" Command="{Binding CancelCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" 
-                            Width="120" Height="35"/>
-                </StackPanel>
+                <Grid Margin="0,20,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>   
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Button Grid.Column="0" Content="Удалить товар" 
+                            Command="{Binding DeleteCommand}" 
+                            CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                            Background="#4B0082" Foreground="White" 
+                            Width="120" Height="35"
+                            Visibility="{Binding IsEditMode, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+
+                    <StackPanel Grid.Column="2" Orientation="Horizontal">
+                        <Button Content="Сохранить" Command="{Binding SaveCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" 
+                                Background="#4B0082" Foreground="White" Width="120" Height="35" Margin="0,0,10,0"/>
+                        <Button Content="Отмена" Command="{Binding CancelCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" 
+                                Width="120" Height="35"/>
+                    </StackPanel>
+                </Grid>
             </StackPanel>
         </ScrollViewer>
     </Grid>

@@ -16,6 +16,8 @@ public partial class ProductEditViewModel : ObservableObject
     private readonly Product? _originalProduct; // null = добавление, не null = редактирование
     private readonly Action _onSaveSuccess;
     private FileInfo? _selectedImage;
+    
+    public bool IsEditMode => _originalProduct != null; //для отображения кнопки удаления 
 
     public List<Category> Categories { get; }
     public List<Manufacturer> Manufacturers { get; }
@@ -37,6 +39,7 @@ public partial class ProductEditViewModel : ObservableObject
     [ObservableProperty] private Unit? _selectedUnit;
 
     [ObservableProperty] private string _currentImagePath = ""; // Отображаемое имя файла
+
 
     public ProductEditViewModel(Product? product, Action onSaveSuccess)
     {
@@ -83,6 +86,63 @@ public partial class ProductEditViewModel : ObservableObject
         // Для предпросмотра берем имя файла, но конвертер будет искать его в bin. 
         // Чтобы показать локальный файл, мы можем использовать полный путь в конвертере (он умеет).
         CurrentImagePath = file.FullName; 
+    }
+    
+    [RelayCommand]
+    private void Delete(Window window)
+    {
+        // 1. Проверяем, что это не режим добавления (нельзя удалить то, чего нет в БД)
+        if (_originalProduct == null) return;
+
+        // 2. Запрашиваем подтверждение
+        var result = MessageBox.Show(
+            $"Вы действительно хотите удалить товар '{Name}'?\nЭто действие нельзя отменить.",
+            "Подтверждение удаления",
+            MessageBoxButton.YesNo,
+            MessageBoxImage.Question);
+
+        if (result != MessageBoxResult.Yes) return;
+
+        try
+        {
+            using var context = new BicycleShopDbContext();
+
+            // 3. Проверяем, есть ли товар в заказах
+            bool isInOrders = context.OrderProducts.Any(op => op.ProductId == _originalProduct.Id);
+            if (isInOrders)
+            {
+                MessageBox.Show(
+                    "Невозможно удалить товар, так как он присутствует в заказах.\nСначала удалите связанные заказы.",
+                    "Ошибка удаления",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+                return;
+            }
+
+            // 4. Находим товар в БД для удаления
+            var productToDelete = context.Products.Find(_originalProduct.Id);
+            if (productToDelete == null) return;
+
+            // 5. Запоминаем имя картинки
+            string photoName = productToDelete.Photo ?? "";
+
+            // 6. Удаляем из БД
+            context.Products.Remove(productToDelete);
+            context.SaveChanges();
+
+            // 7. Удаляем физический файл (из корня и из bin)
+            FileService.DeleteImage(photoName);
+
+            MessageBox.Show("Товар успешно удален.", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            // 8. Обновляем главный список и закрываем окно
+            _onSaveSuccess?.Invoke();
+            window.Close();
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show($"Ошибка при удалении: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
     }
 
     [RelayCommand]
