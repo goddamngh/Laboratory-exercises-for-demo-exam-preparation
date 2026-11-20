@@ -8,6 +8,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         
@@ -62,7 +63,7 @@
         </Border>
         
         <!-- Список товаров -->
-        <ListBox Grid.Row="1" ItemsSource="{Binding Products}" 
+        <ListBox Grid.Row="2" ItemsSource="{Binding Products}" 
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
                  Background="#F0F0F0" BorderThickness="0" Padding="10"
                  HorizontalContentAlignment="Stretch">
