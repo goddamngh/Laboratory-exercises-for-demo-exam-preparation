@@ -57,6 +57,7 @@
 
                 <!-- Кнопка "Добавить" (только для Админа) -->
                 <Button Grid.Column="3" Content="Добавить товар" Background="#4B0082" Foreground="White" 
+                        Command="{Binding AddProductCommand}"
                         Height="30" Padding="15,0" FontWeight="Bold"
                         Visibility="{Binding IsAdmin, Converter={StaticResource BooleanToVisibilityConverter}}"/>
             </Grid>
@@ -70,7 +71,8 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <!-- Контейнер для одного товара -->
-                    <Border BorderBrush="#CCCCCC" BorderThickness="1" Margin="5"  Padding="10">
+                    <Border BorderBrush="#CCCCCC" BorderThickness="1" Margin="5"  Padding="10"
+                            MouseLeftButtonUp="EditProduct_ClicK">
                         <Border.Style>
                             <Style TargetType="Border">
                                 <Setter Property="Background" Value="White"/>

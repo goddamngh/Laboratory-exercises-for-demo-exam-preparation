@@ -25,4 +25,20 @@ public partial class MainWindow : Window
         DataContext = new MainViewModel();
         UserInfoText.Text = $"{UserSession.Fio} ({UserSession.RoleName})";
     }
+
+    private void EditProduct_ClicK(object sender, MouseButtonEventArgs e)
+    {
+        // Проверяем, что клик был именно по карточке товара
+        if (sender is FrameworkElement element && element.DataContext is ProductViewModel productVm)
+        {
+            // Проверяем, что текущий пользователь — Администратор
+            if (UserSession.RoleName == "Администратор")
+            {
+                if (DataContext is MainViewModel vm)
+                {
+                    vm.EditProductCommand.Execute(productVm);
+                }
+            }
+        }
+    }
 }

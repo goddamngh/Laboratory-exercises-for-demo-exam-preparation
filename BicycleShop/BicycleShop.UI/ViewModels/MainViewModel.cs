@@ -5,6 +5,7 @@ using System.Windows.Data;
 using BicycleShop.Core.Session;
 using BicycleShop.Data.Context;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Microsoft.EntityFrameworkCore;
 
 namespace BicycleShop.UI.ViewModels;
@@ -22,6 +23,28 @@ public partial class MainViewModel : ObservableObject
     
     [ObservableProperty]
     private string _selectedFilter = "Все диапазоны";
+        
+    [RelayCommand]
+    private void AddProduct()
+    {
+        // Открываем окно добавления (product = null)
+        var vm = new ProductEditViewModel(null, () => RefreshProducts());
+        var window = new ProductEditWindow(vm);
+        window.ShowDialog();
+    }
+
+    [RelayCommand]
+    private void EditProduct(ProductViewModel productVm)
+    {
+        // Ищем полный объект в БД для редактирования
+        using var context = new BicycleShopDbContext();
+        var product = context.Products.Find(productVm.Id);
+        if (product == null) return;
+
+        var vm = new ProductEditViewModel(product, () => RefreshProducts());
+        var window = new ProductEditWindow(vm);
+        window.ShowDialog();
+    }
     
     public string[] SortOptions { get; } = 
     { 
@@ -132,5 +155,14 @@ public partial class MainViewModel : ObservableObject
             : ListSortDirection.Ascending;
 
         ProductsView.SortDescriptions.Add(new SortDescription(propertyName, direction));
+    }
+
+
+    // Метод для обновления списка после сохранения
+    private void RefreshProducts()
+    {
+        Products.Clear();
+        LoadData();
+        ProductsView.Refresh(); // Обновляем фильтрацию/сортировку
     }
 }
