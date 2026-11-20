@@ -73,18 +73,18 @@
                                     <Run Text="{Binding Name, Mode=OneWay}" FontWeight="Bold" FontSize="14"/>
                                 </TextBlock>
                                 
-                                <TextBlock Text="{Binding Description}" TextWrapping="Wrap" FontSize="12" Foreground="#555555" Margin="0,5"/>
+                                <TextBlock Text="{Binding Description}" TextWrapping="Wrap" FontSize="12" Margin="0,5"/>
                                 <TextBlock Text="{Binding ManufacturerName, StringFormat='Производитель: {0}'}" FontSize="12"/>
                                 <TextBlock Text="{Binding SupplierName, StringFormat='Поставщик: {0}'}" FontSize="12"/>
                                 
                                 <!-- Цена -->
                                 <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                     <!-- Старая цена (зачеркнутая, красная) видна только если есть скидка -->
-                                    <TextBlock Text="{Binding Price, StringFormat={}{0:C}}" Foreground="Red" 
+                                    <TextBlock Text="{Binding Price, StringFormat=₽ {0:N2}}" Foreground="Red" 
                                                TextDecorations="Strikethrough" Margin="0,0,10,0" FontSize="13"
                                                Visibility="{Binding HasDiscount, Converter={StaticResource BooleanToVisibilityConverter}}"/>
                                     <!-- Итоговая цена -->
-                                    <TextBlock Text="{Binding FinalPrice, StringFormat={}{0:C}}" FontWeight="Bold" FontSize="13"/>
+                                    <TextBlock Text="{Binding FinalPrice, StringFormat=₽ {0:N2}}" FontWeight="Bold" FontSize="13"/>
                                 </StackPanel>
                                 
                                 <TextBlock FontSize="12" Margin="0,2,0,0">
