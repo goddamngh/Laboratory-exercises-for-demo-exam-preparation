@@ -32,15 +32,7 @@ public class ProductViewModel: ObservableObject
     public bool HasDiscount => _product.ValidDiscount > 0;
     
     public bool IsOutOfStock => _product.QuantityInStock == 0;
-
-    public string PhotoPath
-    {
-        get
-        {
-            if (string.IsNullOrWhiteSpace(_product.Photo)) 
-                return "/Images/picture.png"; 
-            return $"/Images/{_product.Photo}";
-        }
-    }
+    
+    public string PhotoPath => _product.Photo ?? "";
 
 }
