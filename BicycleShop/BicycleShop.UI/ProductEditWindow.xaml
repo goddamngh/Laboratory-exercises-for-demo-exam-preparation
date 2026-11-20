@@ -66,17 +66,21 @@
 
                     <StackPanel Grid.Column="0">
                         <TextBlock Text="Цена:" Margin="0,0,0,5"/>
-                        <TextBox Text="{Binding Price, UpdateSourceTrigger=PropertyChanged}" Height="25" Margin="0,0,0,10"/>
+                        <TextBox Text="{Binding Price, UpdateSourceTrigger=PropertyChanged}" 
+                                 Height="25" Margin="0,0,0,10" 
+                                 PreviewTextInput="NumericValidation_PreviewTextInput"/>
                     </StackPanel>
                     
                     <StackPanel Grid.Column="2">
                         <TextBlock Text="Кол-во на складе:" Margin="0,0,0,5"/>
-                        <TextBox Text="{Binding QuantityInStock, UpdateSourceTrigger=PropertyChanged}" Height="25" Margin="0,0,0,10"/>
+                        <TextBox PreviewTextInput="NumericValidation_PreviewTextInput"
+                                 Text="{Binding QuantityInStock, UpdateSourceTrigger=PropertyChanged}" Height="25" Margin="0,0,0,10"/>
                     </StackPanel>
                     
                     <StackPanel Grid.Column="4">
                         <TextBlock Text="Скидка (%):" Margin="0,0,0,5"/>
-                        <TextBox Text="{Binding ValidDiscount, UpdateSourceTrigger=PropertyChanged}" Height="25" Margin="0,0,0,10"/>
+                        <TextBox PreviewTextInput="NumericValidation_PreviewTextInput" 
+                                 Text="{Binding ValidDiscount, UpdateSourceTrigger=PropertyChanged}" Height="25" Margin="0,0,0,10"/>
                     </StackPanel>
                 </Grid>
 

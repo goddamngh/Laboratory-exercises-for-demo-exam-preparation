@@ -1,5 +1,6 @@
 using System.IO;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using BicycleShop.UI.ViewModels;
 using Microsoft.Win32;
@@ -36,6 +37,18 @@ public partial class ProductEditWindow : Window
             if (DataContext is ProductEditViewModel vm)
             {
                 vm.SetImage(new FileInfo(dialog.FileName));
+            }
+        }
+    }
+
+    private void NumericValidation_PreviewTextInput(object sender, TextCompositionEventArgs e)
+    {
+        foreach (char c in e.Text)
+        {
+            if (!char.IsDigit(c) && c != '.' && c != ',')
+            {
+                e.Handled = true;
+                return;
             }
         }
     }

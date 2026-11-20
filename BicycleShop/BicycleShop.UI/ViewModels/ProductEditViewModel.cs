@@ -88,20 +88,52 @@ public partial class ProductEditViewModel : ObservableObject
     [RelayCommand]
     private void Save(Window window)
     {
-        // Валидация
         if (string.IsNullOrWhiteSpace(Name))
         {
-            MessageBox.Show("Введите наименование товара.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show("Поле 'Наименование' не может быть пустым.\nПожалуйста, введите название товара.", 
+                            "Ошибка валидации", MessageBoxButton.OK, MessageBoxImage.Warning);
             return;
         }
+        
+        if (string.IsNullOrWhiteSpace(Description))
+        {
+            MessageBox.Show("Поле 'Описание' не может быть пустым.\nПожалуйста, добавьте описание товара.", 
+                            "Ошибка валидации", MessageBoxButton.OK, MessageBoxImage.Warning);
+            return;
+        }
+        
         if (Price < 0)
         {
-            MessageBox.Show("Цена не может быть отрицательной.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show("Цена не может быть отрицательной.\nПожалуйста, введите положительное число.", 
+                            "Ошибка валидации", MessageBoxButton.OK, MessageBoxImage.Warning);
             return;
         }
+        
         if (QuantityInStock < 0)
         {
-            MessageBox.Show("Количество не может быть отрицательным.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show("Количество на складе не может быть отрицательным.\nПожалуйста, введите положительное число.", 
+                            "Ошибка валидации", MessageBoxButton.OK, MessageBoxImage.Warning);
+            return;
+        }
+        
+        if (ValidDiscount < 0 || ValidDiscount > 100)
+        {
+            MessageBox.Show("Размер скидки должен быть в диапазоне от 0 до 100%.\nПожалуйста, исправьте значение.", 
+                            "Ошибка валидации", MessageBoxButton.OK, MessageBoxImage.Warning);
+            return;
+        }
+        
+        if (Article.Length > 6)
+        {
+            MessageBox.Show($"Артикул не может быть длиннее 6 символов.\nВаш артикул: {Article} (длина {Article.Length}).\nПожалуйста, сократите артикул.", 
+                            "Ошибка валидации", MessageBoxButton.OK, MessageBoxImage.Warning);
+            return;
+        }
+        
+        if (SelectedCategory == null || SelectedManufacturer == null || SelectedSupplier == null || SelectedUnit == null)
+        {
+            MessageBox.Show("Пожалуйста, выберите категорию, производителя, поставщика и единицу измерения из выпадающих списков.", 
+                            "Ошибка валидации", MessageBoxButton.OK, MessageBoxImage.Warning);
             return;
         }
 
