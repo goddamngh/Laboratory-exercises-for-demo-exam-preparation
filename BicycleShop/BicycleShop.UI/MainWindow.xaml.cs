@@ -23,6 +23,6 @@ public partial class MainWindow : Window
         InitializeComponent();
         
         DataContext = new MainViewModel();
-        UserInfoText.Text = $"{UserSession.Fio} ({UserSession.Name})";
+        UserInfoText.Text = $"{UserSession.Fio} ({UserSession.RoleName})";
     }
 }

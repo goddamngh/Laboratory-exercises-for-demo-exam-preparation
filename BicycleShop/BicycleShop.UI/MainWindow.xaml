@@ -25,6 +25,42 @@
             </Grid>
         </Border>
         
+        <!-- Панель управления (видна только Менеджеру и Админу) -->
+        <Border Grid.Row="1" Background="#F8F8F8" BorderBrush="#CCCCCC" BorderThickness="0,1,0,1" Padding="10"
+                Visibility="{Binding IsAdminOrManager, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Поиск -->
+                <StackPanel Orientation="Horizontal" Grid.Column="0">
+                    <TextBlock Text="Поиск:" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                    <TextBox Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" Width="250" Height="25" VerticalContentAlignment="Center"/>
+                </StackPanel>
+
+                <!-- Сортировка -->
+                <StackPanel Orientation="Horizontal" Grid.Column="1" Margin="20,0">
+                    <TextBlock Text="Сортировка:" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                    <ComboBox ItemsSource="{Binding SortOptions}" SelectedItem="{Binding SelectedSort}" Width="200" Height="25"/>
+                </StackPanel>
+
+                <!-- Фильтр по скидке -->
+                <StackPanel Orientation="Horizontal" Grid.Column="2" Margin="0,0,20,0">
+                    <TextBlock Text="Фильтр (скидка):" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                    <ComboBox ItemsSource="{Binding FilterOptions}" SelectedItem="{Binding SelectedFilter}" Width="150" Height="25"/>
+                </StackPanel>
+
+                <!-- Кнопка "Добавить" (только для Админа) -->
+                <Button Grid.Column="3" Content="Добавить товар" Background="#4B0082" Foreground="White" 
+                        Height="30" Padding="15,0" FontWeight="Bold"
+                        Visibility="{Binding IsAdmin, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+            </Grid>
+        </Border>
+        
         <!-- Список товаров -->
         <ListBox Grid.Row="1" ItemsSource="{Binding Products}" 
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
