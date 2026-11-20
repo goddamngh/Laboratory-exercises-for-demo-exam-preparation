@@ -102,7 +102,8 @@
                             </Grid.ColumnDefinitions>
 
                             <!-- Фото -->
-                            <Image Source="{Binding PhotoPath}" Width="120" Height="90" Stretch="Uniform" Grid.Column="0"/>
+                            <Image Source="{Binding PhotoPath, Converter={StaticResource ImageSourceConverter}}" 
+                                   Width="Auto" Height="Auto" Stretch="Fill" Grid.Column="0"/>
 
                             <!-- Информация о товаре -->
                             <StackPanel Grid.Column="1" Margin="15,0">
@@ -134,8 +135,9 @@
                             </StackPanel>
 
                             <!-- Скидка справа -->
-                            <Border Grid.Column="2" Background="#4B0082" CornerRadius="5" VerticalAlignment="Center" Padding="10,5">
-                                <TextBlock Text="{Binding DiscountDisplay}" Foreground="White" FontWeight="Bold" HorizontalAlignment="Center" FontSize="16"/>
+                            <Border Grid.Column="2" Background="#4B0082" VerticalAlignment="Stretch" Height="Auto">
+                                <TextBlock Text="{Binding DiscountDisplay}" Foreground="White" 
+                                           FontWeight="Bold" HorizontalAlignment="Center" FontSize="16" VerticalAlignment="Center"/>
                             </Border>
                         </Grid>
                     </Border>
