@@ -165,7 +165,7 @@ public partial class ProductEditViewModel : ObservableObject
                     Article = this.Article,
                     Name = this.Name,
                     Description = this.Description,
-                    Price = (int)this.Price,
+                    Price = this.Price,
                     QuantityInStock = this.QuantityInStock,
                     ValidDiscount = this.ValidDiscount,
                     CategoryId = SelectedCategory?.Id,
@@ -184,7 +184,7 @@ public partial class ProductEditViewModel : ObservableObject
                 {
                     productToUpdate.Name = this.Name;
                     productToUpdate.Description = this.Description;
-                    productToUpdate.Price = (int)this.Price;
+                    productToUpdate.Price = this.Price;
                     productToUpdate.QuantityInStock = this.QuantityInStock;
                     productToUpdate.ValidDiscount = this.ValidDiscount;
                     productToUpdate.CategoryId = SelectedCategory?.Id;
